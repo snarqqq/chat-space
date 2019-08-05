@@ -49,8 +49,8 @@ add_index :users,  :username
 |------|----|-------|
 |body|text||
 |image|string||
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 Messageモデル内でbodyカラムかimageカラムのどちらかがnullでなければ良いバリデーション
 ```
@@ -70,19 +70,19 @@ Messageモデル内でbodyカラムかimageカラムのどちらかがnullでな
 
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false|
+|name|string|null: false|
 
 ### Association
 - has_many :members
 - has_many :users, through: :members
-
+- has_many :messages
 
 ## membersテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+|group_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :group
