@@ -2,19 +2,20 @@
 
   .header
     %p.header__user-name
-      test-user
+      = current_user.name
     %ul.header__lists
       %li.header__list
-        = link_to "#" do
+        = link_to "/groups/new" do
           = fa_icon "edit", class: "header__icon"
       %li.header__list
-        = link_to "#" do
+        = link_to edit_user_path(current_user) do
           = fa_icon "cog", class: "header__icon"
 
   .groups
-    %a
-      %div.group
-        %p.group__group-name
-          test-group
-        %p.group__latest-message
-          最新のメッセージ
+    .group
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          .group__group-name
+            = group.name
+          .group__latest-message
+            メッセージはまだありません。
