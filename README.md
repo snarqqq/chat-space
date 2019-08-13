@@ -54,7 +54,7 @@ add_index :users,  :username
 
 Messageモデル内でbodyカラムかimageカラムのどちらかがnullでなければ良いバリデーション
 ```
-  validates :email_or_phone, presence: true
+  validates :body_or_image, presence: true
 
   private
     def body_or_image
