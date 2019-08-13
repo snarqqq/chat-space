@@ -7,28 +7,27 @@
     .chat-header
       .chat-header__left-box
         .chat-header__current-group
-          test-group
+          = @group.name
         %ul.chat-header__member-list
           Member：
           %li.chat-header__member
-            test-user
+            - @group.users.each do |user|
+              = user[:name]
+
+            
       .chat-header__edit-btn
         = link_to "Edit", "#", class: "edit-link"
 
     .messages
-      .message
-        .message__upper-info
-          .message__user-name
-            test-user
-          .message__date
-            2019/8/6(Tue) 21:03:59
-        .messsage__body
-          working on this page!!
+      = render @messages
 
     .form
-      %form.form__box
+      = form_for [@group, @message], class: 'form__box' do |f|
         .form__input-box
-          %input.form__message{type: "text", placeholder: "type a message"}
-          %label.form__icon
-            = fa_icon "image"
-        %input.form__button{type: "submit", value: "Send"}
+          = f.text_field :body, class: 'form__message', placeholder: 'type a message'
+          .form__mask
+            = f.label :image, class: 'form__mask-image' do
+              = fa_icon 'picture-o', class: 'icon'
+              = f.file_field :image, class: 'hidden'
+        .send-btn
+          = f.submit 'Send', class: 'form__button'
