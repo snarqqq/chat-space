@@ -40,7 +40,7 @@
   .messages {
     padding: 0 40px;
     height: calc(100vh - 190px);
-    overflow: scroll;
+    overflow-y: scroll;
     .message {
       &__upper-info {
         margin-bottom: 10px;
@@ -58,11 +58,16 @@
         margin-left: 10px;
       }
       &__body {
-        font-size: 14px;
-        color: #434A56;
         margin-bottom: 40px;
       }
+      &__text {
+        font-size: 14px;
+        color: #434A56;
+      }
     }
+  }
+  .messages::-webkit-scrollbar {
+    display: none;
   }
 
   .form {

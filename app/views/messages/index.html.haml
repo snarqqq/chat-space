@@ -16,7 +16,7 @@
 
             
       .chat-header__edit-btn
-        = link_to "Edit", "#", class: "edit-link"
+        = link_to "Edit", edit_group_path(@group), class: "edit-link"
 
     .messages
       = render @messages
