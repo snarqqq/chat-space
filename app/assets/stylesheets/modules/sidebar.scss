@@ -36,6 +36,9 @@
     padding: 20px 20px 0;
     .group {
       margin-bottom: 40px;
+      &__link {
+        text-decoration: none;
+      }
       &__group-name {
         font-size: 15px;
         color: $white;
