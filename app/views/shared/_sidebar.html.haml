@@ -5,7 +5,7 @@
       = current_user.name
     %ul.header__lists
       %li.header__list
-        = link_to "/groups/new" do
+        = link_to "/groups/new", data: {"turbolinks": false} do
           = fa_icon "edit", class: "header__icon"
       %li.header__list
         = link_to edit_user_path(current_user) do
@@ -14,7 +14,7 @@
   .groups
     .group
       - current_user.groups.each do |group|
-        = link_to group_messages_path(group) do
+        = link_to group_messages_path(group), class: "group__link", data: {"turbolinks": false} do
           .group__group-name
             = group.name
           .group__latest-message
